@@ -17,7 +17,8 @@ export default function Home({ events }) {
       <ul>
         {events.map((event, i) => (
           <li key={i}>
-            <a href={event.slug}>{event.title}</a>=
+            <a href={event.slug}>{event.title}</a>
+            <p>{event.eventDate}</p>
           </li>
         ))}
       </ul>
@@ -26,7 +27,7 @@ export default function Home({ events }) {
 }
 
 export async function getStaticProps() {
-  const { data: events } = await client.query({
+  const { data } = await client.query({
     query: gql`
       query {
         events {
@@ -40,7 +41,7 @@ export async function getStaticProps() {
       }
     `,
   });
-  console.log(events);
+  const { events } = data;
   return {
     props: {
       events,
