@@ -2,13 +2,23 @@ import React from "react";
 import client from "../../apolloClient";
 import { gql } from "@apollo/client";
 
+import Link from "next/link";
+
 export default function EventsPage({ event }) {
   return (
     <div>
       <h1>{event.title}</h1>
 
-      <div dangerouslySetInnerHTML={{ __html: event.description.html }}></div>
+      <div dangerouslySetInnerHTML={{ __html: event.body.html }}></div>
       <p>{event.eventDate}</p>
+      <p>
+        Contact Name : <b>{event.contactName}</b> | Contact Number{" "}
+        <b>{event.contactNumber}</b>
+      </p>
+
+      <Link href="/">
+        <a className="btn">Link Back</a>
+      </Link>
     </div>
   );
 }
@@ -38,10 +48,13 @@ export async function getStaticProps({ params }) {
         events(where: { slug: $slug }) {
           slug
           title
-          description {
+          body {
             html
           }
           eventDate
+          contactName
+          contactNumber
+          contactEmail
         }
       }
     `,
