@@ -17,7 +17,7 @@ export default function Home({ events }) {
       <ul>
         {events.map((event, i) => (
           <li key={i}>
-            <a href={event.slug}>{event.title}</a>
+            <a href={`/events/${event.slug}`}>{event.title}</a>
             <p>{event.eventDate}</p>
           </li>
         ))}
