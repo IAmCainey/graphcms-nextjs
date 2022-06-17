@@ -1,4 +1,4 @@
-export defult function() {
+export defult function ContactPage() {
   return(
 
 <form name="contact" method="POST" data-netlify="true">
