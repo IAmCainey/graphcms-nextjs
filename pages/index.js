@@ -4,7 +4,6 @@ import { gql } from "@apollo/client";
 import client from "../apolloClient";
 
 export default function Home({ events }) {
-  console.log(events);
   return (
     <div>
       <Head>
@@ -30,7 +29,7 @@ export async function getStaticProps() {
   const { data } = await client.query({
     query: gql`
       query {
-        events {
+        events(orderBy: eventDate_DESC) {
           title
           slug
           description {
