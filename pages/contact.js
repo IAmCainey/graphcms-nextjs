@@ -1,4 +1,4 @@
-export defult function ContactPage() {
+export default function ContactPage() {
   return(
 
 <form name="contact" method="POST" data-netlify="true">
